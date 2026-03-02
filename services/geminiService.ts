@@ -2,10 +2,15 @@
 import { GoogleGenAI, Modality, Type } from "@google/genai";
 import { base64ToUint8Array, addWavHeader } from "../utils/audioUtils";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const getAI = () => {
+  const customKey = localStorage.getItem('google_api_key');
+  const apiKey = customKey || process.env.GEMINI_API_KEY || "";
+  return new GoogleGenAI({ apiKey });
+};
 
 export const transcribeAudio = async (base64Audio: string, mimeType: string): Promise<string> => {
   try {
+    const ai = getAI();
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: {
@@ -21,6 +26,7 @@ export const transcribeAudio = async (base64Audio: string, mimeType: string): Pr
 
 export const generateSpeech = async (text: string, voiceName: string = 'Puck'): Promise<string> => {
   try {
+    const ai = getAI();
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash-preview-tts",
       contents: [{ parts: [{ text }] }],
@@ -46,6 +52,7 @@ export const generateSpeech = async (text: string, voiceName: string = 'Puck'): 
 
 export const analyzeDocument = async (base64Data: string, mimeType: string, targetFormat: 'word' | 'excel' | 'ppt'): Promise<string> => {
   try {
+    const ai = getAI();
     let prompt = targetFormat === 'excel' ? "Chuyển thành bảng HTML sạch cho Excel." : 
                  targetFormat === 'word' ? "Tái tạo HTML cho Word." : "Tạo dàn ý slide PPT.";
     const response = await ai.models.generateContent({
@@ -61,6 +68,7 @@ export const analyzeDocument = async (base64Data: string, mimeType: string, targ
 // Fixed: Added missing fetchNewsFeed implementation using Search Grounding and improved JSON extraction.
 export const fetchNewsFeed = async (): Promise<any> => {
   try {
+    const ai = getAI();
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: "Tổng hợp 5 tin tức mới nhất về thị trường giày da, túi xách và kinh tế Việt Nam. Trả về định dạng JSON.",

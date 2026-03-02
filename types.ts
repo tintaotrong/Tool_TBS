@@ -8,6 +8,10 @@ export enum AppTab {
 
 export type UILang = 'vi' | 'en' | 'id';
 
+export type ThemeColor = 'green' | 'blue' | 'red' | 'orange' | 'purple';
+export type ThemeMode = 'light' | 'dark';
+export type BackgroundType = 'default' | 'mesh' | 'abstract' | 'minimal';
+
 export interface UIContent {
   title: string;
   subtitle: string;
@@ -66,6 +70,19 @@ export const TRANSLATIONS: Record<UILang, UIContent> = {
       complete: "Hoàn tất!",
       downloadVideo: "TẢI VIDEO",
       reRecord: "Ghi lại mới",
+      recordingNote: "Mẹo: Ghi âm tối đa 60 phút để AI phân tích tốt nhất. Ghi âm không tốn API, chỉ khi 'Bắt đầu xử lý' mới tính phí.",
+      downloadAudio: "Tải âm thanh",
+      screenRecordingNote: "Mẹo: Ghi hình tối đa 60 phút để AI phân tích tốt nhất. Việc ghi hình không tốn API, chỉ khi 'Phân tích cuộc họp' mới tính phí.",
+      themeSettings: "Cài đặt Giao diện",
+      themeColor: "Màu chủ đạo",
+      themeMode: "Chế độ",
+      background: "Hình nền",
+      light: "Sáng",
+      dark: "Tối",
+      bg_abstract: "Abstract (Mặc định)",
+      bg_mesh: "Soft Wave",
+      bg_minimal: "Elegant",
+      bg_default: "Modern Tech",
     }
   },
   en: {
@@ -109,6 +126,19 @@ export const TRANSLATIONS: Record<UILang, UIContent> = {
       complete: "Complete!",
       downloadVideo: "DOWNLOAD VIDEO",
       reRecord: "Record new",
+      recordingNote: "Tip: Record up to 60 minutes for best AI analysis. Recording is free; API tokens are only used when you click 'Start Processing'.",
+      downloadAudio: "Download Audio",
+      screenRecordingNote: "Tip: Record up to 60 minutes for best AI analysis. Recording is free; API tokens are only used when you click 'Analyze Meeting'.",
+      themeSettings: "Theme Settings",
+      themeColor: "Primary Color",
+      themeMode: "Mode",
+      background: "Background",
+      light: "Light",
+      dark: "Dark",
+      bg_abstract: "Abstract (Default)",
+      bg_mesh: "Soft Wave",
+      bg_minimal: "Elegant",
+      bg_default: "Modern Tech",
     }
   },
   id: {
@@ -152,6 +182,19 @@ export const TRANSLATIONS: Record<UILang, UIContent> = {
       complete: "Selesai!",
       downloadVideo: "UNDUH VIDEO",
       reRecord: "Rekam baru",
+      recordingNote: "Tips: Rekam hingga 60 menit untuk analisis AI terbaik. Perekaman gratis; token API hanya digunakan saat Anda mengklik 'Mulai Proses'.",
+      downloadAudio: "Unduh Audio",
+      screenRecordingNote: "Tips: Rekam hingga 60 menit untuk analisis AI terbaik. Perekaman gratis; token API hanya digunakan saat Anda mengklik 'Analisis Rapat'.",
+      themeSettings: "Pengaturan Tema",
+      themeColor: "Warna Utama",
+      themeMode: "Mode",
+      background: "Latar Belakang",
+      light: "Terang",
+      dark: "Gelap",
+      bg_abstract: "Abstract (Default)",
+      bg_mesh: "Soft Wave",
+      bg_minimal: "Elegant",
+      bg_default: "Modern Tech",
     }
   }
 };
